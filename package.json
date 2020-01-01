@@ -2,6 +2,7 @@
   "name": "typerdoodle",
   "version": "0.0.1",
   "dependencies": {
+    "@types/node": "^13.1.2",
     "jimp": "^0.9.3",
     "typescript": "^3.7.4"
   },
@@ -12,5 +13,5 @@
     "test": "test"
   },
   "author": "am freilich",
-  "license": "ISC"
+  "license": "GPL-3.0-only"
 }
