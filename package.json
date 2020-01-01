@@ -1,0 +1,16 @@
+{
+  "name": "typerdoodle",
+  "version": "0.0.1",
+  "dependencies": {
+    "jimp": "^0.9.3",
+    "typescript": "^3.7.4"
+  },
+  "description": "typescript doodles",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "author": "am freilich",
+  "license": "ISC"
+}
