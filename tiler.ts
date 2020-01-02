@@ -24,7 +24,7 @@ export function generateRandomTile(): Tile {
 export function generateRandomArrangement(p: number, level: number): TileArrangement {
   p = p > 0 && p < 1 ? p : 1;
   const rand = Math.random();
-  if (rand > p) {
+  if (level > 3) {
     return { Tile: generateRandomTile() };
   } else {
     // console.log('yeah!')
@@ -55,17 +55,17 @@ export function getColorFromTileArrangment(argmt: TileArrangement | undefined, x
     }
   } else {
     switch (2 * +(x > .5) + +(y > .5)) {
-      case 0: return getColorFromTileArrangment(argmt.UL, (2 * x) % .5, (2 * y) % .5);
-      case 1: return getColorFromTileArrangment(argmt.UR, (2 * x) % .5, (2 * y) % .5);
-      case 2: return getColorFromTileArrangment(argmt.LL, (2 * x) % .5, (2 * y) % .5);
-      case 3: return getColorFromTileArrangment(argmt.LR, (2 * x) % .5, (2 * y) % .5);
+      case 0: return getColorFromTileArrangment(argmt.UL, 2 * (x % .5), 2 * (y % .5));
+      case 1: return getColorFromTileArrangment(argmt.UR, 2 * (x % .5), 2 * (y % .5));
+      case 2: return getColorFromTileArrangment(argmt.LL, 2 * (x % .5), 2 * (y % .5));
+      case 3: return getColorFromTileArrangment(argmt.LR, 2 * (x % .5), 2 * (y % .5));
       default: console.log('yiyi'); return 0;
     }
   }
 }
 
 export function getRandomColorFunction(): ((x: number, y: number) => Color) {
-  const argmt = {Tile: generateRandomTile()};
-  console.log(JSON.stringify(argmt, null, 2));
+  const argmt = generateRandomArrangement(0, 1);
+  // console.log(JSON.stringify(argmt, null, 2));
   return (x, y) => getColorFromTileArrangment(argmt, x + .01 * Math.random(), y + .01 * Math.random());
 }
