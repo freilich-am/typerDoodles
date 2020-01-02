@@ -7,6 +7,6 @@ for (let i = 0; i < 64; i++) {
     for (let j = 0; j < 64; j++) {
         str = str + colorFxn(i/64, j/64);
     }
-    console.log(str);
+    console.log(`${str}(${i})`);
 }
 // print();

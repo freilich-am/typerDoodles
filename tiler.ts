@@ -13,17 +13,19 @@ export interface Tile {
 
 const randomBit = () => Math.random() >= 0.5;
 
+export function generateRandomTile(): Tile {
+  return {
+    isDiagonalRight: randomBit(),
+    isLeftFilledIn: randomBit()
+  } ;
+}
+
 // i think p should be < .25 so that this terminates whp.
 export function generateRandomArrangement(p: number, level: number): TileArrangement {
   p = p > 0 && p < 1 ? p : 1;
   const rand = Math.random();
   if (rand > p) {
-    return {
-      Tile: {
-        isDiagonalRight: randomBit(),
-        isLeftFilledIn: randomBit()
-      }
-    } ;
+    return { Tile: generateRandomTile() };
   } else {
     // console.log('yeah!')
     return {
@@ -63,7 +65,7 @@ export function getColorFromTileArrangment(argmt: TileArrangement | undefined, x
 }
 
 export function getRandomColorFunction(): ((x: number, y: number) => Color) {
-  const argmt = generateRandomArrangement(.6, 1);
+  const argmt = {Tile: generateRandomTile()};
   console.log(JSON.stringify(argmt, null, 2));
-  return (x, y) => getColorFromTileArrangment(argmt, x, y);
+  return (x, y) => getColorFromTileArrangment(argmt, x + .01 * Math.random(), y + .01 * Math.random());
 }
