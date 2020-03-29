@@ -24,7 +24,7 @@ export function generateRandomTile(): Tile {
 export function generateRandomArrangement(p: number, level: number): TileArrangement {
   p = p > 0 && p < 1 ? p : 1;
   const rand = Math.random();
-  if (level > 3) {
+  if (level > 4) {
     return { Tile: generateRandomTile() };
   } else {
     // console.log('yeah!')
@@ -37,9 +37,9 @@ export function generateRandomArrangement(p: number, level: number): TileArrange
   }
 }
 
-export interface Color{
-  // ??
-}
+// export interface Color{
+//   // ??
+// }
 
 // x, y should be in [0, 1], where (0, 0) marks the upper right
 export function getColorFromTileArrangment(argmt: TileArrangement | undefined, x: number, y: number): number {
@@ -64,8 +64,8 @@ export function getColorFromTileArrangment(argmt: TileArrangement | undefined, x
   }
 }
 
-export function getRandomColorFunction(): ((x: number, y: number) => Color) {
+export function getRandomColorFunction(): ((x: number, y: number) => number) {
   const argmt = generateRandomArrangement(0, 1);
   // console.log(JSON.stringify(argmt, null, 2));
-  return (x, y) => getColorFromTileArrangment(argmt, x + .01 * Math.random(), y + .01 * Math.random());
+  return (x, y) => getColorFromTileArrangment(argmt, x + 0.0001 * Math.random(), y + 0.0001 * Math.random());
 }
