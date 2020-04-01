@@ -17,7 +17,7 @@ export class HslColor extends Color {
   constructor(h: number, s: number, l: number, ) {
     const c = (1 - Math.abs(2 * l - 1)) * s;
     const mod = (h % 360) / 60;
-    const x = c * (1 - Math.abs(2 * mod - 1))
+    const x = c * (1 - Math.abs(mod % 2 - 1))
     // console.log(`h: ${h}, s: ${s}, l: ${l},`)
     // console.log(`c: ${c}, mod: ${mod}, x: ${x}, mod': ${Math.ceil(mod)}, m: ${l - (c/2)}`)
     let r;

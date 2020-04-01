@@ -31,5 +31,5 @@ export function testColorScheme(cs: ColorScheme): ((x: number, y: number) => Col
 }
 
 export function testHSL(x: number, y: number): Color {
-  return new HslColor(((x + y) % 1) * 360, .5, .5);
+  return new HslColor(x * 360, .99, .4);
 }
