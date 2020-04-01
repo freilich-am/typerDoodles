@@ -1,4 +1,4 @@
-import { Color, exaggerate, invert, HsvColor } from "./color";
+import { Color, exaggerate, invert, HslColor } from "./color";
 
 // const randomBit = () => Math.random() >= 0.5;
 const random255 = () => Math.floor(Math.random() * 255);
@@ -18,10 +18,10 @@ export function getRandomColorScheme() {
 }
 
 export function getRandomHslColorScheme() {
-  const s = 0;
-  const l = 0;
+  const s = Math.random();
+  const l = Math.random();
   const c1 = Math.random() * 360;
-  return { scheme: [new HsvColor(c1, s, l, ), new HsvColor(c1 + 90, s, l, ), new HsvColor(c1 + 180, s, l, ), new HsvColor(c1 + 270, s, l, )] };
+  return { scheme: [new HslColor(c1, s, l, ), new HslColor(c1 + 90, s, l, ), new HslColor(c1 + 180, s, l, ), new HslColor(c1 + 270, s, l, )] };
 }
 
 export function testColorScheme(cs: ColorScheme): ((x: number, y: number) => Color) {
@@ -31,5 +31,5 @@ export function testColorScheme(cs: ColorScheme): ((x: number, y: number) => Col
 }
 
 export function testHSL(x: number, y: number): Color {
-  return new HsvColor(y * 360, x, x);
+  return new HslColor(((x + y) % 1) * 360, .5, .5);
 }
