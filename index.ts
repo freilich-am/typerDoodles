@@ -1,8 +1,11 @@
 import Jimp from 'jimp'
 import { getRandomColorScheme, testColorScheme, getRandomHslColorScheme, testHSL } from './colorScheme';
 
-// const colorScheme = getRandomHslColorScheme();
-const colorFxn = testHSL;
+const colorScheme = getRandomHslColorScheme(
+    parseInt(process.argv[5]) || 3,
+    parseFloat(process.argv[6]) || .5,
+    parseFloat(process.argv[7]) || .5);
+const colorFxn = testColorScheme(colorScheme);
 
 const width = parseInt(process.argv[3]) || 400;
 const height = parseInt(process.argv[4]) || width;
