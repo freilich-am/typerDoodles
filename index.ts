@@ -1,8 +1,8 @@
 import Jimp from 'jimp'
-import { getRandomColorScheme, testColorScheme } from './colorScheme';
+import { getRandomColorScheme, testColorScheme, getRandomHslColorScheme, testHSL } from './colorScheme';
 
-const colorScheme = getRandomColorScheme();
-const colorFxn = testColorScheme(colorScheme);
+// const colorScheme = getRandomHslColorScheme();
+const colorFxn = testHSL;
 
 const width = parseInt(process.argv[3]) || 400;
 const height = parseInt(process.argv[4]) || width;
@@ -17,7 +17,7 @@ img.scan(0, 0, img.bitmap.width, img.bitmap.height, function(x, y, idx) {
     this.bitmap.data[idx + 3] = 255;
 });
 
-img.write(process.argv[2] || 'new.jpg');
+img.write(process.argv[2] || 'hsltest.jpg');
 
 // for (let i = 0; i < 150; i++) {
 //     let str = '';

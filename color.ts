@@ -10,6 +10,47 @@ export class Color{
   }
 }
 
+export class HsvColor extends Color {
+  h: number;
+  s: number;
+  l: number;
+  constructor(h: number, s: number, l: number, ) {
+    const c = (1 - Math.abs(2 * l - 1)) * s;
+    const mod = (h % 360) / 60;
+    const x = c * (1 - Math.abs(2 * mod - 1))
+    let r;
+    let g;
+    let b;
+    switch (Math.ceil(mod)) {
+      case 1: r = c; g = x; b = 0; break; 
+      case 2: r = x; g = c; b = 0; break; 
+      case 3: r = 0; g = c; b = x; break; 
+      case 4: r = 0; g = x; b = c; break; 
+      case 5: r = x; g = 0; b = c; break; 
+      case 6: r = c; g = 0; b = x; break; 
+      default: r = 0; g = 0; b = 0;
+    }
+    let m = l - (c/2);
+    super(r + m, g + m, b + m);
+    this.h = h;
+    this.s = s;
+    this.l = l;
+  }
+}
+
+export function invertR(c: Color): Color {
+  return new Color(255 - c.r, c.g, c.b);
+}
+export function invertG(c: Color): Color {
+  return new Color(c.r, 255 - c.g, c.b);
+}
+export function invertB(c: Color): Color {
+  return new Color(c.r, c.g, 255 - c.b);
+}
+export function invert(c: Color): Color {
+  return new Color(255 - c.r, 255 - c.g, 255 - c.b);
+}
+
 function inflate(x: number): number {
   if (x < 0 || x > 255) {
     return 0;
