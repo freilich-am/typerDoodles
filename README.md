@@ -3,9 +3,7 @@ typescript art generation:
 
 for now, to set up, just do an `npm install`
 
-to run the generate an image run 
-`tsc --esModuleInterop index`
+To generate a work do
+`tsc --esModuleInterop works/{workname}`
 then
-`node index {path to output file} {width} {height}`
-
-e.g. `node index test.jpg 800 400`
+`node works/{workname}` (depending on the work, you may have to provide command line arguments)
