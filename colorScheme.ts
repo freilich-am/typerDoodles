@@ -10,6 +10,10 @@ export function getRandomColor(): Color {
   return new Color(random255(), random255(), random255());
 }
 
+export function getRandomColor(): Color {
+  return new Color(random255(), random255(), random255());
+}
+
 export function getRandomColorScheme() {
   const rand1 = getRandomColor();
   const rand2 = getRandomColor();
