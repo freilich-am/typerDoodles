@@ -1,5 +1,5 @@
 import Jimp from 'jimp'
-import { getRandomColorScheme, testColorScheme, getRandomHslColorScheme, testHSL } from './colorScheme';
+import { getRandomColorScheme, testColorScheme, getRandomHslColorScheme, testHSL } from '../colorScheme';
 
 const colorScheme = getRandomHslColorScheme(
     parseInt(process.argv[5]) || 3,

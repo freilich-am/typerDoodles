@@ -18,8 +18,6 @@ export class HslColor extends Color {
     const c = (1 - Math.abs(2 * l - 1)) * s;
     const mod = (h % 360) / 60;
     const x = c * (1 - Math.abs(mod % 2 - 1))
-    // console.log(`h: ${h}, s: ${s}, l: ${l},`)
-    // console.log(`c: ${c}, mod: ${mod}, x: ${x}, mod': ${Math.ceil(mod)}, m: ${l - (c/2)}`)
     let r;
     let g;
     let b;
@@ -33,8 +31,6 @@ export class HslColor extends Color {
       default: r = 0; g = 0; b = 0;
     }
     let m = l - (c/2);
-    // console.log(`r, g, b ${r}, ${g}, ${b}`)
-    // console.log(`r, g, b ${r + m}, ${g + m}, ${b + m}`)
     super(((r + m) * 256) % 256, ((g + m) * 256) % 256, ((b + m) * 256) % 256);
     this.h = h;
     this.s = s;
@@ -61,6 +57,18 @@ function inflate(x: number): number {
   } else {
     return Math.round((1 - ((x/255) * (x/255))) * 255)
   }
+}
+
+export function rgbAverage(arr: Color[]): Color {
+  let rsum = 0;
+  let gsum = 0;
+  let bsum = 0;
+  arr.forEach(color => {
+    rsum += color.r;
+    gsum += color.g;
+    bsum += color.b;
+  })
+  return new Color(rsum/arr.length, gsum/arr.length, bsum/arr.length);
 }
 
 export function exaggerate(color: Color, depth: number = 0): Color {
