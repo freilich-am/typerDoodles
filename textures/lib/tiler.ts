@@ -1,3 +1,5 @@
+import { RegionFxn, getRegion } from "../types/textureFxn";
+
 export interface TileArrangement{
   UL?: TileArrangement;
   UR?: TileArrangement;
@@ -64,8 +66,7 @@ export function getColorFromTileArrangment(argmt: TileArrangement | undefined, x
   }
 }
 
-export function getRandomColorFunction(): ((x: number, y: number) => number) {
+export function getRandomColorFunction(): RegionFxn {
   const argmt = generateRandomArrangement(0, 1);
-  // console.log(JSON.stringify(argmt, null, 2));
-  return (x, y) => getColorFromTileArrangment(argmt, x + 0.0001 * Math.random(), y + 0.0001 * Math.random());
+  return getRegion((x: number, y: number) => getColorFromTileArrangment(argmt, x, y), .5);
 }

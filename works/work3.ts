@@ -1,6 +1,6 @@
-import { smoothDraw } from "../writeJpg";
-import { HslColor } from "../color";
-import { ColorFxn } from "../colorFxn";
+import { smoothDraw } from "../jpgUtilities/writeJpg";
+import { HslColor } from "../colorTypes/color";
+import { ColorFxn } from "../colorTypes/colorFxn";
 
 function generateOffsetsGrid(r: number): number[][]{
   const offSets = [] as number[][];

@@ -1,5 +1,5 @@
 import Jimp from 'jimp'
-import { ColorFxn, smoothen } from './colorFxn';
+import { ColorFxn, smoothen } from '../colorTypes/colorFxn';
 
 export function writeJpg(colorFxn: ColorFxn, filename: string, width: number, height: number) {
   let img = new Jimp(width, height, (err, image) => {} );
@@ -12,7 +12,7 @@ export function writeJpg(colorFxn: ColorFxn, filename: string, width: number, he
       this.bitmap.data[idx + 3] = 255;
   });
   
-  img.write(filename);
+  img.write('img/' + filename);
 }
 
 export function smoothDraw(colorFxn: ColorFxn, filename: string, width: number, height: number, factor?: number) {
