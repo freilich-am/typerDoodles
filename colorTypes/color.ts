@@ -18,11 +18,6 @@ export class HslColor extends Color {
     const c = (1 - Math.abs(2 * l - 1)) * s;
     const mod = (h % 360) / 60;
     const x = c * (1 - Math.abs(mod % 2 - 1))
-<<<<<<< HEAD
-=======
-    // console.log(`h: ${h}, s: ${s}, l: ${l},`)
-    // console.log(`c: ${c}, mod: ${mod}, x: ${x}, mod': ${Math.ceil(mod)}, m: ${l - (c/2)}`)
->>>>>>> 0a60e5eec44e7310b81a93ba66bc041cce8a8604
     let r;
     let g;
     let b;
@@ -36,11 +31,6 @@ export class HslColor extends Color {
       default: r = 0; g = 0; b = 0;
     }
     let m = l - (c/2);
-<<<<<<< HEAD
-=======
-    // console.log(`r, g, b ${r}, ${g}, ${b}`)
-    // console.log(`r, g, b ${r + m}, ${g + m}, ${b + m}`)
->>>>>>> 0a60e5eec44e7310b81a93ba66bc041cce8a8604
     super(((r + m) * 256) % 256, ((g + m) * 256) % 256, ((b + m) * 256) % 256);
     this.h = h;
     this.s = s;
@@ -87,4 +77,8 @@ export function exaggerate(color: Color, depth: number = 0): Color {
   } else {
     return exaggerate(exaggerate(color), depth - 1);
   }
+}
+
+export function colorDist(c1: Color, c2: Color): number {
+  return (Math.abs(c1.r - c2.r) + Math.abs(c1.g - c2.g) + Math.abs(c1.b - c2.b))/(3 * 255);
 }

@@ -1,5 +1,5 @@
 import Jimp from 'jimp'
-import { getRandomColorScheme, testColorScheme, getRandomHslColorScheme, testHSL } from '../colorScheme';
+import { testColorScheme, getRandomHslColorScheme, } from '../colorTypes/colorScheme';
 
 const colorScheme = getRandomHslColorScheme(
     parseInt(process.argv[5]) || 3,
@@ -21,12 +21,3 @@ img.scan(0, 0, img.bitmap.width, img.bitmap.height, function(x, y, idx) {
 });
 
 img.write(process.argv[2] || 'hsltest.jpg');
-
-// for (let i = 0; i < 150; i++) {
-//     let str = '';
-//     for (let j = 0; j < 300; j++) {
-//         str = str + colorFxn(i/150, j/300);
-//     }
-//     console.log(`${str}(${i})`);
-// }
-// print();
