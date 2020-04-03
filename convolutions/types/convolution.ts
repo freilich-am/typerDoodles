@@ -1,9 +1,8 @@
 import { griddy } from "../../textures/lib/griddy";
 import { ColorFxn, grid } from "../../colorTypes/colorFxn";
+import { PlaneMap } from "../../planeMap/planeMap";
 
 // export type ConvolutionFxn = (x: number, y: number) => {x: number, y: number};
-
-export type PlaneMap<T> = (x: number, y: number) => T;
 
 export type ConvolutionFxn = PlaneMap<{x: number, y: number}>; 
 

@@ -1,6 +1,8 @@
-export type TextureFxn = (x: number, y: number) => number;
+import { PlaneMap } from "../../planeMap/planeMap";
 
-export type RegionFxn = (x: number, y: number) => boolean;
+export type TextureFxn = PlaneMap<number>;
+
+export type RegionFxn = PlaneMap<boolean>;
 
 export function getRegion(text: TextureFxn, cutoff: number) {
   return (x: number, y: number) => text(x, y) > cutoff;

@@ -1,0 +1,1 @@
+export type PlaneMap<T> = (x: number, y: number) => T;
