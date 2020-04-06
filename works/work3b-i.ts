@@ -4,7 +4,8 @@ import { griddy } from "../textures/lib/griddy";
 import { getRandomHslColorScheme } from "../colorTypes/colorScheme";
 import { HslColor, Color } from "../colorTypes/color";
 
-const scheme = getRandomHslColorScheme(3, .2, .8);
+const scheme0 = getRandomHslColorScheme(3, .2, .8);
+const scheme = scheme0.concat(scheme0).concat(scheme0);
 const black = new Color(0, 0, 0);
 
 function myWork(r: number): ColorFxn {
@@ -12,15 +13,14 @@ function myWork(r: number): ColorFxn {
   return (x: number, y: number) => {
     const res = g2(x, y);
     if (res < 0 || res > 1) {
+      console.log('yikes')
       return black
     } else {
-      if (res < .3) {
-        return scheme[1];
-      } else if (res < .7) {
+      const num = Math.floor(16 * res)
+      if (num % 2 !== 0) {
         return scheme[0];
-      } else {
-        return scheme[2];
       }
+      return scheme[1 + (num / 2)];
     }
   };
 }
@@ -28,4 +28,4 @@ function myWork(r: number): ColorFxn {
 console.log('v1');
 
 const res = parseInt(process.argv[3]) || 400;
-smoothDraw(outline(myWork(100), .0003, black), process.argv[2] || 'griddyDoodle.jpg', res, res, 10);
+smoothDraw(outline(myWork(60), .00003, black), process.argv[2] || 'griddyDoodle.jpg', res, res, 10);
