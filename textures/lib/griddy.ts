@@ -2,10 +2,13 @@ import { TextureFxn } from "../types/textureFxn";
 
 export function generateOffsetsGrid(r: number): number[][]{
   const offSets = [] as number[][];
+  const distFromMid = (x: number, y: number) => {
+    return Math.sqrt((.5 - x) * (.5 - x) + (.5 - y) * (.5 - y));
+  }
   for (var i = 0; i <= r; i++) {
     offSets.push([]);
     for (var j = 0; j <= r; j++) {
-      if (i > 0 && j > 0 && (Math.random() < .2)) {
+      if (i > 0 && j > 0 && (Math.random() < 1 - 2 * distFromMid(i/r, j/r))) {
         offSets[i].push(offSets[i-1][j-1]);
         offSets[i-1][j] = offSets[i][j-1] = offSets[i][j];
       } else {
@@ -17,7 +20,7 @@ export function generateOffsetsGrid(r: number): number[][]{
 }
 
 export function griddy(r0: number): TextureFxn {
-  const offSets = generateOffsetsGrid(2 * r0);
+  const offSets = generateOffsetsGrid(r0);
   return (x0: number, y0: number) => {
     const x = x0 // x0 < .5 ? x0 * x0 : (1-x0) * (1-x0);
     const y = y0 // y0 * y0;
