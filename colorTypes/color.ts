@@ -80,5 +80,6 @@ export function exaggerate(color: Color, depth: number = 0): Color {
 }
 
 export function colorDist(c1: Color, c2: Color): number {
+  if (!c1 || !c2) { return 1; }
   return (Math.abs(c1.r - c2.r) + Math.abs(c1.g - c2.g) + Math.abs(c1.b - c2.b))/(3 * 255);
 }

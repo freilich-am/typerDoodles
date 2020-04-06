@@ -24,7 +24,7 @@ export function griddy(r0: number): TextureFxn {
   return (x0: number, y0: number) => {
     const x = x0 // x0 < .5 ? x0 * x0 : (1-x0) * (1-x0);
     const y = y0 // y0 * y0;
-    const r = r0;// x < y ? 2 * r0 : r0
+    const r = r0 - 1;// x < y ? 2 * r0 : r0
     const i = Math.floor(x * r);
     const j = Math.floor(y * r);
     const diffx = x * r - i;
